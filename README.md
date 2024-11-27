@@ -23,7 +23,7 @@ Certifica-te de que tens os seguintes softwares instalados no teu sistema:
    ```
 3. Clona o repositório:
    ```bash
-   git clone git@github.com:mandinho0/homenagemFinal.git tenProject
+   git clone https://github.com/mandinho0/homenagemFinal.git tenProject
    ```
 4. Entra no diretório do projeto:
    ```bash
