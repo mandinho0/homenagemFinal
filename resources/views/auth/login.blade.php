@@ -44,4 +44,18 @@
             </x-primary-button>
         </div>
     </form>
+    @if (Route::has('register'))
+    <div class="container mt-9">
+        <span class="mb-2 text-sm  text-gray-700 dark:text-gray-300">
+            Ainda não tem conta?
+        </span>
+            <a
+                href="{{ route('register') }}"
+                class="rounded-md ml-3 px-3 py-2 bg-blue-500 text-white ring-1 ring-transparent transition hover:bg-blue-600 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+            >
+                Registar
+            </a>
+    </div>
+    @endif
+
 </x-guest-layout>
