@@ -16,27 +16,6 @@
                         {{ __('Criar Novo Plano') }}
                     </a>
 
-
-
-
-
-
-
-                    FALTA LISTAR OS PLANOS E VER OS REDIRECIONAMENTOS
-
-
-
-
-
-
-
-
-
-
-
-
-
-                    
                     <!-- Verificar se existem planos -->
                     @if($plans->isEmpty())
                         <p class="mt-4 text-gray-500">{{ __('Ainda não tem nenhum plano criado.') }}</p>

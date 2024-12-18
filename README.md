@@ -97,7 +97,12 @@ Certifica-te de que tens os seguintes softwares instalados no teu sistema:
    git commit -m "Descrição das alterações"
    ```
 
-### 3. Enviar Alterações
+### 3. Antes de Enviar as Alterações
+1. Atualiza a branch remota:
+   ```bash
+   git pull origin master
+   ```
+### 4. Enviar Alterações
 1. Envia as alterações para o repositório remoto:
    ```bash
    git push origin master

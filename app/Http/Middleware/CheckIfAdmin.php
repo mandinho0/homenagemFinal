@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Log;
 
 class CheckIfAdmin
 {
@@ -25,10 +26,9 @@ class CheckIfAdmin
      * @param  \Illuminate\Contracts\Auth\Authenticatable|null  $user
      * @return bool
      */
-    private function checkIfUserIsAdmin($user)
+    public function checkIfUserIsAdmin($user): bool
     {
-        // return ($user->is_admin == 1);
-        return true;
+        return (bool)$user->role;
     }
 
     /**
