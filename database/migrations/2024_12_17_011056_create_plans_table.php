@@ -13,15 +13,23 @@ return new class extends Migration
     {
         Schema::create('plans', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id')->nullable(false);
+            $table->unsignedBigInteger('user_id');
+            $table->string('name');
+            $table->date('birth_date');
+            $table->string('email');
+            $table->string('phone');
+            $table->decimal('estimated_value', 10, 2);
             $table->string('ceremony_type');
             $table->string('location');
-            $table->json('customizations')->nullable();
-            $table->date('seventh_day')->nullable();
-            $table->date('death_anniversary')->nullable();
+            $table->string('religion')->nullable();
+            $table->json('services')->nullable();
             $table->json('extras')->nullable();
+            $table->json('contacts')->nullable();
             $table->text('final_observations')->nullable();
             $table->timestamps();
+
+            // Foreign Key Constraint
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
