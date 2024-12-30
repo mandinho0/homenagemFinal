@@ -30,16 +30,23 @@ class PlanController extends Controller
      */
     public function create()
     {
-        return view('plans.create');
+        $additionalServices = Plan::additionalServices();
+        $extras = Plan::extras();
+
+        return view('plans.create', compact('additionalServices', 'extras'));
     }
+
 
     /**
      * Mostrar o formulário para editar um plano.
      */
     public function edit($id)
     {
-        $plan = Plan::findOrFail($id); // Obtém o plano pelo ID ou retorna 404
-        return view('plans.edit', compact('plan')); // Retorna a view de edição
+        $plan = Plan::findOrFail($id);
+        $additionalServices = Plan::additionalServices();
+        $extras = Plan::extras();
+
+        return view('plans.edit', compact('plan', 'additionalServices', 'extras'));
     }
 
     /**

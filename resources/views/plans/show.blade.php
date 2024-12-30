@@ -1,9 +1,20 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Detalhes do Plano') }}
-        </h2>
+        <div class="flex items-center justify-between">
+            <a class="return" href="javascript:history.back()" style="cursor: pointer;">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                     viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                </svg>
+            </a>
+
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight text-center flex-grow text-center">
+                {{ __('Detalhes do Plano') }}
+            </h2>
+        </div>
     </x-slot>
+
 
     <div class="py-12">
         <div class="max-w-5xl mx-auto sm:px-6 lg:px-8">
@@ -84,7 +95,7 @@
                             {{ __('Voltar') }}
                         </a>
                         @if(Route::has('plans.edit'))
-                            <a href="{{ route('plans.edit', $plan->id) }}" class="bg-blue-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded">
+                            <a href="{{ route('plans.edit', $plan->id) }}" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
                                 {{ __('Editar') }}
                             </a>
                         @endif

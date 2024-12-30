@@ -1,9 +1,19 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight text-center">
-            {{ __('Plano de Homenagem') }}
-        </h2>
+        <div class="flex items-center justify-between">
+            <a class="return" href="javascript:history.back()" style="cursor: pointer;">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                     viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                </svg>
+            </a>
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight text-center flex-grow text-center">
+                {{ __('Novo Plano') }}
+            </h2>
+        </div>
     </x-slot>
+
 
     <div class="py-12 bg-gray-100 flex items-center justify-center">
         <div class="w-full max-w-4xl px-6 lg:px-8">
@@ -189,69 +199,19 @@
                             </div>
 
                             <!-- Step: Serviços Adicionais -->
+
+
+
+
                             <div class="step hidden" id="step-5">
                                 <h4 class="text-2xl font-bold text-center mb-6 text-gray-800">{{ __('Serviços Adicionais') }}</h4>
                                 <div class="grid grid-cols-1 gap-6">
-                                    <div class="form-check">
-                                        <input type="checkbox" name="services[]" value="convivio_7_dia"
-                                               class="form-check-input">
-                                        <label
-                                            class="ml-3 text-gray-700 font-semibold">{{ __('Convívio do 7º Dia') }}</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="checkbox" name="services[]" value="caminhada_comemorativa"
-                                               class="form-check-input">
-                                        <label
-                                            class="ml-3 text-gray-700 font-semibold">{{ __('Caminhada Comemorativa') }}</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="checkbox" name="services[]" value="plantacao_arvore"
-                                               class="form-check-input">
-                                        <label
-                                            class="ml-3 text-gray-700 font-semibold">{{ __('Plantação de Árvore em Memória') }}</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="checkbox" name="services[]" value="transmissao_vivo"
-                                               class="form-check-input">
-                                        <label
-                                            class="ml-3 text-gray-700 font-semibold">{{ __('Transmissão ao Vivo') }}</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="checkbox" name="services[]" value="homenagem_musical"
-                                               class="form-check-input">
-                                        <label
-                                            class="ml-3 text-gray-700 font-semibold">{{ __('Homenagem Musical') }}</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="checkbox" name="services[]" value="discurso_personalizado"
-                                               class="form-check-input">
-                                        <label
-                                            class="ml-3 text-gray-700 font-semibold">{{ __('Discurso Personalizado') }}</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="checkbox" name="services[]" value="lanterna_ceu"
-                                               class="form-check-input">
-                                        <label
-                                            class="ml-3 text-gray-700 font-semibold">{{ __('Lanterna para o Céu') }}</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="checkbox" name="services[]" value="fotografia_memorial"
-                                               class="form-check-input">
-                                        <label
-                                            class="ml-3 text-gray-700 font-semibold">{{ __('Fotografia Memorial') }}</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="checkbox" name="services[]" value="video_comemorativo"
-                                               class="form-check-input">
-                                        <label
-                                            class="ml-3 text-gray-700 font-semibold">{{ __('Vídeo Comemorativo') }}</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="checkbox" name="services[]" value="livro_memorias"
-                                               class="form-check-input">
-                                        <label
-                                            class="ml-3 text-gray-700 font-semibold">{{ __('Livro de Memórias') }}</label>
-                                    </div>
+                                    @foreach($additionalServices as $code => $label)
+                                        <div class="form-check">
+                                            <input type="checkbox" name="services[]" value="{{ $code }}" class="form-check-input">
+                                            <label class="ml-3 text-gray-700 font-semibold">{{ $label }}</label>
+                                        </div>
+                                    @endforeach
                                 </div>
                                 <div class="mt-6 flex justify-between">
                                     <button type="button"
@@ -269,93 +229,12 @@
                             <div class="step hidden" id="step-6">
                                 <h4 class="text-2xl font-bold text-center mb-6 text-gray-800">{{ __('Escolha de Extras') }}</h4>
                                 <div class="grid grid-cols-1 gap-6">
-                                    <div class="form-check">
-                                        <input type="checkbox" name="extras[]" value="flores" class="form-check-input">
-                                        <label class="ml-3 text-gray-700 font-semibold">{{ __('Flores') }}</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="checkbox" name="extras[]" value="padlet" class="form-check-input">
-                                        <label
-                                            class="ml-3 text-gray-700 font-semibold">{{ __('Padlet de Mensagens') }}</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="checkbox" name="extras[]" value="velas_memoria"
-                                               class="form-check-input">
-                                        <label
-                                            class="ml-3 text-gray-700 font-semibold">{{ __('Velas de Memória') }}</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="checkbox" name="extras[]" value="mensagem_video"
-                                               class="form-check-input">
-                                        <label
-                                            class="ml-3 text-gray-700 font-semibold">{{ __('Mensagem em Vídeo') }}</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="checkbox" name="extras[]" value="banco_memorial"
-                                               class="form-check-input">
-                                        <label
-                                            class="ml-3 text-gray-700 font-semibold">{{ __('Banco Memorial') }}</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="checkbox" name="extras[]" value="caixinha_memorias"
-                                               class="form-check-input">
-                                        <label
-                                            class="ml-3 text-gray-700 font-semibold">{{ __('Caixinha de Memórias') }}</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="checkbox" name="extras[]" value="pulseira_memorial"
-                                               class="form-check-input">
-                                        <label
-                                            class="ml-3 text-gray-700 font-semibold">{{ __('Pulseira Memorial') }}</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="checkbox" name="extras[]" value="quadro_fotos"
-                                               class="form-check-input">
-                                        <label
-                                            class="ml-3 text-gray-700 font-semibold">{{ __('Quadro de Fotos') }}</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="checkbox" name="extras[]" value="colagem_fotos"
-                                               class="form-check-input">
-                                        <label
-                                            class="ml-3 text-gray-700 font-semibold">{{ __('Colagem de Fotos') }}</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="checkbox" name="extras[]" value="arvore_memorial"
-                                               class="form-check-input">
-                                        <label
-                                            class="ml-3 text-gray-700 font-semibold">{{ __('Árvore Memorial') }}</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="checkbox" name="extras[]" value="album_digital"
-                                               class="form-check-input">
-                                        <label
-                                            class="ml-3 text-gray-700 font-semibold">{{ __('Álbum Digital') }}</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="checkbox" name="extras[]" value="lancamento_fogos"
-                                               class="form-check-input">
-                                        <label
-                                            class="ml-3 text-gray-700 font-semibold">{{ __('Lançamento de Fogos') }}</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="checkbox" name="extras[]" value="musica_especial"
-                                               class="form-check-input">
-                                        <label
-                                            class="ml-3 text-gray-700 font-semibold">{{ __('Música Especial') }}</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="checkbox" name="extras[]" value="livro_condolencias"
-                                               class="form-check-input">
-                                        <label
-                                            class="ml-3 text-gray-700 font-semibold">{{ __('Livro de Condolências') }}</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="checkbox" name="extras[]" value="caixa_cinzas_personalizada"
-                                               class="form-check-input">
-                                        <label
-                                            class="ml-3 text-gray-700 font-semibold">{{ __('Caixa de Cinzas Personalizada') }}</label>
-                                    </div>
+                                    @foreach($extras as $code => $label)
+                                        <div class="form-check">
+                                            <input type="checkbox" name="extras[]" value="{{ $code }}" class="form-check-input">
+                                            <label class="ml-3 text-gray-700 font-semibold">{{ $label }}</label>
+                                        </div>
+                                    @endforeach
                                 </div>
 
                                 <div class="mt-6 flex justify-between">
@@ -376,10 +255,10 @@
                                 <div id="contact-list" class="grid grid-cols-1 gap-6">
                                     <div class="contact-item flex items-center gap-4">
                                         <div class="flex-grow">
-                                            <label for="contact_email[]" class="block text-gray-700 font-semibold">
+                                            <label for="contacts[]" class="block text-gray-700 font-semibold">
                                                 {{ __('Email da Pessoa') }}
                                             </label>
-                                            <input type="email" name="contact_email[]"
+                                            <input type="email" name="contacts[]"
                                                    class="w-full mt-2 border-gray-300 rounded-lg shadow-sm not-required">
                                         </div>
                                     </div>
@@ -518,10 +397,10 @@
                 const newContact = `
                 <div class="contact-item flex items-center justify-between gap-4">
                     <div class="flex-grow">
-                        <label for="contact_email[]" class="block text-gray-700 font-semibold">
+                        <label for="contacts[]" class="block text-gray-700 font-semibold">
                             {{ __('Email da Pessoa') }}
                                 </label>
-                                <input type="email" name="contact_email[]"
+                                <input type="email" name="contacts[]"
                                        class="w-full mt-2 border-gray-300 rounded-lg shadow-sm not-required">
                             </div>
                             <button type="button"
@@ -534,9 +413,7 @@
                 $contactList.append(newContact);
             });
 
-            // Eliminar campo de contato
             $contactList.on('click', '.delete-contact', function () {
-                // Verifica se há mais de uma linha
                 if ($contactList.find('.contact-item').length > 1) {
                     $(this).closest('.contact-item').remove();
                 } else {
@@ -547,7 +424,4 @@
             showStep(currentStep);
         });
     </script>
-
-
-
 </x-app-layout>
