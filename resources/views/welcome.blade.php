@@ -151,14 +151,6 @@
                         </section>
                     </main>
 
-
-
-
-
-
-
-
-
                     <footer class="py-16 text-center text-sm text-black dark:text-white/70 bg-blue-300">
                         Ispgaya | Unidade Curricular de Projeto de Tecnologias e Negócios | 2025
                     </footer>
