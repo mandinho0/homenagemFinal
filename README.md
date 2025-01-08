@@ -74,7 +74,11 @@ Certifica-te de que tens os seguintes softwares instalados no teu sistema:
    ```bash
    php artisan serve
    ```
-3. Acede à aplicação no navegador:
+3. Corre o Node.js:
+   ```bash
+   npm run dev
+   ```
+4. Acede à aplicação no navegador:
    http://127.0.0.1:8000
 
 ---
