@@ -31,9 +31,11 @@ class PlanController extends Controller
     public function create()
     {
         $additionalServices = Plan::additionalServices();
+        $servicePrices = Plan::servicePrices();
+        $extraPrices = Plan::extraPrices();
         $extras = Plan::extras();
 
-        return view('plans.create', compact('additionalServices', 'extras'));
+        return view('plans.create', compact('additionalServices', 'extras', 'servicePrices', 'extraPrices'));
     }
 
 

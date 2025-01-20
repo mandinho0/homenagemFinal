@@ -53,6 +53,10 @@ class PlanCrudController extends CrudController
         CRUD::column('status')->label('Status')->value(function ($entry) {
             return ucwords(strtolower($entry->status));
         });
+
+        CRUD::column('annual_fee')->label('Valor da Taxa Anual')->type('number')->suffix(' €');
+        CRUD::column('annual_fee_paid')->label('Taxa Paga')->type('boolean');
+
         CRUD::column('created_at')->label('Created At')->type('datetime');
     }
 
@@ -73,6 +77,16 @@ class PlanCrudController extends CrudController
         CRUD::field('ceremony_type')->label('Ceremony Type');
         CRUD::field('location')->label('Location');
         CRUD::field('religion')->label('Religion')->nullable();
+        CRUD::field('annual_fee')
+            ->type('number')
+            ->label('Valor da Taxa Anual')
+            ->attributes(['step' => '0.01', 'min' => '0'])
+            ->default(0);
+
+        CRUD::field('annual_fee_paid')
+            ->type('boolean')
+            ->label('Taxa Anual Paga');
+
         CRUD::field('services')->type('json')->label('Services')->nullable();
         CRUD::field('extras')->type('json')->label('Extras')->nullable();
         CRUD::field('contacts')->type('json')->label('Contacts')->nullable();

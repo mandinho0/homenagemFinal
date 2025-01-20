@@ -12,6 +12,12 @@
                     </a>
                 </div>
 
+                <div class="advice w-3/4 flex flex-col items-center text-center mx-auto">
+                    <span class="text-orange-600 font-bold">{{ __('Lembrete') }}</span>
+                    <p class="text-gray-500">{{ __('Todos os planos têm uma taxa de anuidade obrigatória a ser paga pelo cliente.') }}</p>
+                    <p class="text-gray-500 mb-6">{{ __('Essa taxa varia de acordo com a inflação anual.') }}</p>
+                </div>
+
                 <!-- Verificar se existem planos -->
                 @if($plans->isEmpty())
                     <p class="text-gray-500 text-center">{{ __('Ainda não tem nenhum plano criado.') }}</p>
@@ -24,6 +30,7 @@
                             <th class="px-6 py-3">{{ __('Tipo de Cerimónia') }}</th>
                             <th class="px-6 py-3">{{ __('Status') }}</th>
                             <th class="px-6 py-3">{{ __('Pago') }}</th>
+                            <th class="px-6 py-3">{{ __('Taxa Anual Liquidada') }}</th>
                             <th class="px-6 py-3">{{ __('Valor Final (€)') }}</th>
                             <th class="px-6 py-3">{{ __('Ações') }}</th>
                         </tr>
@@ -32,10 +39,17 @@
                         @foreach($plans as $plan)
                             <tr class="border-b hover:bg-gray-50">
                                 <td class="px-6 py-4">{{ $plan->name }}</td>
-                                <td class="px-6 py-4">{{ $plan->ceremony_type }}</td>
+                                <td class="px-6 py-4">{{ $plan->getCeremonyTypeLabel() }}</td>
                                 <td class="px-6 py-4 capitalize">{{ __($plan->status) }}</td>
                                 <td class="px-6 py-4">
                                     @if($plan->is_paid)
+                                        <span class="text-green-500 font-bold">{{ __('Sim') }}</span>
+                                    @else
+                                        <span class="text-red-500 font-bold">{{ __('Não') }}</span>
+                                    @endif
+                                </td>
+                                <td class="px-6 py-4">
+                                    @if($plan->annual_fee_paid)
                                         <span class="text-green-500 font-bold">{{ __('Sim') }}</span>
                                     @else
                                         <span class="text-red-500 font-bold">{{ __('Não') }}</span>
@@ -47,6 +61,7 @@
                                     <a href="{{ route('plans.show', $plan->id) }}" class="text-blue-500 hover:text-blue-600" title="{{ __('Ver') }}">
                                         <i class="fas fa-eye"></i>
                                     </a>
+                                    @if(!$plan->is_paid)
                                     <a href="{{ route('plans.edit', $plan->id) }}" class="text-yellow-500 hover:text-yellow-600" title="{{ __('Editar') }}">
                                         <i class="fas fa-edit"></i>
                                     </a>
@@ -57,6 +72,7 @@
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </form>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach

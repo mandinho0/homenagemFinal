@@ -44,13 +44,19 @@
                                         {{ ucfirst($plan->status) }}
                                     </span>
                                 </li>
-                                <li><strong>{{ __('Está Pago:') }}</strong>
+                                <li><strong>{{ __('Pago:') }}</strong>
                                     <span class="{{ $plan->is_paid ? 'text-green-600' : 'text-red-600' }}">
                                         {{ $plan->is_paid ? __('Sim') : __('Não') }}
                                     </span>
                                 </li>
                                 <li><strong>{{ __('Valor Final:') }}</strong>
                                     {{ $plan->final_value ? number_format($plan->final_value, 2, ',', '.') : __('N/A') }}
+                                </li>
+                                <li><strong>{{ __('Valor da Taxa Anual:') }}</strong> {{ number_format($plan->annual_fee, 2, ',', '.') }} €</li>
+                                <li><strong>{{ __('Taxa Anual Paga:') }}</strong>
+                                    <span class="{{ $plan->annual_fee_paid ? 'text-green-600' : 'text-red-600' }}">
+                                        {{ $plan->annual_fee_paid ? __('Sim') : __('Não') }}
+                                    </span>
                                 </li>
                             </ul>
                         </div>
@@ -88,6 +94,57 @@
                             <p class="text-gray-600 mt-2">{{ $plan->final_observations }}</p>
                         </div>
                     @endif
+
+                    <!-- Caixa de mensagens -->
+                    <div class="mt-8 border p-4 rounded-lg bg-gray-50 max-w-3xl mx-auto">
+                        <h4 class="font-semibold text-gray-700 mb-4 text-center">{{ __('Trocar Mensagens com o Gestor da Conta') }}</h4>
+
+                        <!-- Listagem de mensagens -->
+                        <div class="mb-4 space-y-4 mt-12">
+                            <!-- Mensagem do gestor (à direita) -->
+                            <div class="flex justify-end">
+                                <div class="bg-blue-500 text-white p-4 rounded-lg max-w-sm text-right shadow-lg">
+                                    <p>Bem-vindo ao serviço! Como posso ajudar?</p>
+                                    <span class="block text-sm text-gray-200 mt-1">01/01/2025 10:00</span>
+                                </div>
+                            </div>
+
+                            <!-- Mensagem do cliente (à esquerda) -->
+                            <div class="flex justify-start">
+                                <div class="bg-gray-200 text-gray-800 p-4 rounded-lg max-w-sm text-left shadow-lg">
+                                    <p>Gostaria de mais informações sobre o estado do meu plano.</p>
+                                    <span class="block text-sm text-gray-500 mt-1">01/01/2025 10:05</span>
+                                </div>
+                            </div>
+
+                            <!-- Mensagem do gestor (à direita) -->
+                            <div class="flex justify-end">
+                                <div class="bg-blue-500 text-white p-4 rounded-lg max-w-sm text-right shadow-lg">
+                                    <p>Claro! O seu plano está em revisão. Receberá uma atualização em breve.</p>
+                                    <span class="block text-sm text-gray-200 mt-1">01/01/2025 10:10</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Formulário de envio -->
+                        <form class="mt-12">
+                            <div class="flex flex gap-4">
+                                <textarea rows="3"
+                                          class="w-full border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200"
+                                          placeholder="{{ __('Escreva a sua mensagem aqui...') }}"
+                                          required>
+                                </textarea>
+                                <div class="flex justify-end">
+                                    <button type="button"
+                                            class="bg-blue-500 text-white font-bold py-2 px-4 rounded">
+                                        {{ __('Enviar') }}
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+
 
                     <!-- Botões de ação -->
                     <div class="mt-8 flex justify-end gap-4">

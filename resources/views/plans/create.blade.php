@@ -14,8 +14,13 @@
         </div>
     </x-slot>
 
+    <h3 class="items-center justify-center flex mt-8">
+                <span class="block text-lg font-semibold">{{ __('Preço Total desde: ') }}
+                    <span id="total-price" data-base-price="2500" class="text-green-600">€2500.00</span>
+                </span>
+    </h3>
 
-    <div class="py-12 bg-gray-100 flex items-center justify-center">
+    <div class="py-4 bg-gray-100 flex items-center justify-center">
         <div class="w-full max-w-4xl px-6 lg:px-8">
             <div class="bg-white shadow-md rounded-lg overflow-hidden">
                 <div class="p-8 text-gray-900">
@@ -55,13 +60,6 @@
                                                class="block text-gray-700 font-semibold">{{ __('Telefone de Contato') }}
                                             <span class="required-asterisk ml-1 text-red-600">*</span></label>
                                         <input type="tel" name="phone" id="phone"
-                                               class="w-full mt-2 border-gray-300 rounded-lg shadow-sm" required>
-                                    </div>
-                                    <div>
-                                        <label for="estimated_value"
-                                               class="block text-gray-700 font-semibold">{{ __('Estimativa de valor para o plano (em euros)') }}
-                                            <span class="required-asterisk ml-1 text-red-600">*</span></label>
-                                        <input type="number" name="estimated_value" id="estimated_value"
                                                class="w-full mt-2 border-gray-300 rounded-lg shadow-sm" required>
                                     </div>
                                 </div>
@@ -199,17 +197,13 @@
                             </div>
 
                             <!-- Step: Serviços Adicionais -->
-
-
-
-
                             <div class="step hidden" id="step-5">
                                 <h4 class="text-2xl font-bold text-center mb-6 text-gray-800">{{ __('Serviços Adicionais') }}</h4>
                                 <div class="grid grid-cols-1 gap-6">
                                     @foreach($additionalServices as $code => $label)
                                         <div class="form-check">
-                                            <input type="checkbox" name="services[]" value="{{ $code }}" class="form-check-input">
-                                            <label class="ml-3 text-gray-700 font-semibold">{{ $label }}</label>
+                                            <input type="checkbox" name="services[]" value="{{ $code }}" class="form-check-input" data-price="{{ $servicePrices[$code] }}">
+                                            <label class="ml-3 text-gray-700 font-semibold">{{ $label }} - desde €{{ $servicePrices[$code] }}</label>
                                         </div>
                                     @endforeach
                                 </div>
@@ -231,8 +225,8 @@
                                 <div class="grid grid-cols-1 gap-6">
                                     @foreach($extras as $code => $label)
                                         <div class="form-check">
-                                            <input type="checkbox" name="extras[]" value="{{ $code }}" class="form-check-input">
-                                            <label class="ml-3 text-gray-700 font-semibold">{{ $label }}</label>
+                                            <input type="checkbox" name="extras[]" value="{{ $code }}" class="form-check-input"  data-price="{{ $extraPrices[$code] }}">
+                                            <label class="ml-3 text-gray-700">{{ $label }} - €{{ $extraPrices[$code] }}</label>
                                         </div>
                                     @endforeach
                                 </div>
@@ -306,7 +300,8 @@
                                     </button>
                                 </div>
                             </div>
-
+                            <!-- input hidden estimated value -->
+                            <input type="hidden" id="estimated_value" name="estimated_value" value="2500">
                         </div>
                     </form>
                     <div class="mt-5">
@@ -422,6 +417,32 @@
             });
 
             showStep(currentStep);
+
+            // Calculating total price
+            const $totalPriceLabel = $('#total-price');
+            const $serviceCheckboxes = $('input[name="services[]"]');
+            const $extrasCheckboxes = $('input[name="extras[]"]');
+
+            function updateTotalPrice() {
+                let total = $totalPriceLabel.data('base-price');
+                $serviceCheckboxes.each(function () {
+                    if (this.checked) {
+                        total += parseFloat($(this).data('price'));
+                    }
+                });
+                $extrasCheckboxes.each(function () {
+                    if (this.checked) {
+                        total += parseFloat($(this).data('price'));
+                    }
+                });
+                $totalPriceLabel.text(`€${total.toFixed(2)}`);
+                $('#estimated_value').val(total.toFixed(2));
+            }
+
+            $serviceCheckboxes.on('change', updateTotalPrice);
+            $extrasCheckboxes.on('change', updateTotalPrice);
+
+            updateTotalPrice();
         });
     </script>
 </x-app-layout>

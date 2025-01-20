@@ -36,6 +36,8 @@ class Plan extends Model
         'status',
         'is_paid',
         'final_value',
+        'annual_fee',
+        'annual_fee_paid',
     ];
 
     protected $casts = [
@@ -44,6 +46,8 @@ class Plan extends Model
         'extras' => 'array',
         'contacts' => 'array',
         'is_paid' => 'boolean',
+        'annual_fee' => 'decimal:2',
+        'annual_fee_paid' => 'boolean',
     ];
 
     /**
@@ -64,6 +68,27 @@ class Plan extends Model
             'fotografia_memorial' => __('Fotografia Memorial'),
             'video_comemorativo' => __('Vídeo Comemorativo'),
             'livro_memorias' => __('Livro de Memórias'),
+        ];
+    }
+
+    /**
+     * Retorna os preços dos serviços.
+     *
+     * @return array
+     */
+    public static function servicePrices()
+    {
+        return [
+            'convivio_7_dia' => 1000,
+            'caminhada_comemorativa' => 500,
+            'plantacao_arvore' => 200,
+            'transmissao_vivo' => 300,
+            'homenagem_musical' => 400,
+            'discurso_personalizado' => 500,
+            'lanterna_ceu' => 200,
+            'fotografia_memorial' => 300,
+            'video_comemorativo' => 400,
+            'livro_memorias' => 500,
         ];
     }
 
@@ -91,5 +116,53 @@ class Plan extends Model
             'livro_condolencias' => __('Livro de Condolências'),
             'caixa_cinzas_personalizada' => __('Caixa de Cinzas Personalizada'),
         ];
+    }
+
+    /**
+     * Retorna os preços dos extras.
+     *
+     * @return array
+     */
+    public static function extraPrices()
+    {
+        return [
+            'flores' => 200,
+            'padlet' => 150,
+            'velas_memoria' => 150,
+            'mensagem_video' => 275,
+            'banco_memorial' => 350,
+            'caixinha_memorias' => 225,
+            'pulseira_memorial' => 120,
+            'quadro_fotos' => 300,
+            'colagem_fotos' => 140,
+            'arvore_memorial' => 500,
+            'album_digital' => 250,
+            'lancamento_fogos' => 500,
+            'musica_especial' => 300,
+            'livro_condolencias' => 100,
+            'caixa_cinzas_personalizada' => 500,
+        ];
+    }
+
+    /**
+     * Retorna os tipos de cerimónia disponíveis.
+     *
+     * @return array
+     */
+    public static function ceremonyTypes(): array
+    {
+        return [
+            0 => 'Enterro',
+            1 => 'Cremação',
+            2 => 'Outro',
+        ];
+    }
+
+    /**
+     * Retorna a label legível do tipo de cerimónia.
+     */
+    public function getCeremonyTypeLabel(): string
+    {
+        return self::ceremonyTypes()[$this->ceremony_type] ?? 'Desconhecido';
     }
 }
