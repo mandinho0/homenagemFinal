@@ -14,7 +14,7 @@
         </div>
     </x-slot>
 
-    <h3 class="items-center justify-center flex mt-8">
+    <h3 class="items-center justify-center flex mt-8 mb-2">
                 <span class="block text-lg font-semibold">{{ __('Preço Total desde: ') }}
                     <span id="total-price" data-base-price="2500" class="text-green-600">€2500.00</span>
                 </span>
@@ -360,9 +360,9 @@
             });
 
             $btnNext.on('click', function () {
-                /*if (!validateCurrentStep()) {
+                if (!validateCurrentStep()) {
                     return;
-                }*/
+                }
 
                 currentStep++;
                 showStep(currentStep);

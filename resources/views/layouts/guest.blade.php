@@ -18,7 +18,7 @@
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
             <div>
                 <a href="/">
-                    <img id="logo" class="max-h-32" src="{{ Vite::asset('resources/images/logo_fune.png') }}" alt="Homenagem Final" />
+                    <img id="logo" class="max-h-24" src="{{ Vite::asset('resources/images/logo_fune.png') }}" alt="Homenagem Final" />
                 </a>
             </div>
 

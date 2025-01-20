@@ -108,8 +108,8 @@
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z" />
                                         </svg>
                                     </div>
-                                    <h3 class="text-lg font-semibold text-gray-800">Eventos e decoração</h3>
-                                    <p class="text-gray-600">
+                                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Eventos e decoração</h3>
+                                    <p class="text-gray-600 ms-4">
                                         Disponibilizamos uma coleção de eventos e decorações dos quais pode escolher aqueles que pretende que sejam realizados durante a cerimónia.
                                     </p>
                                 </div>
@@ -121,20 +121,20 @@
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
                                         </svg>
                                     </div>
-                                    <h3 class="text-lg font-semibold text-gray-800">Data e localização</h3>
-                                    <p class="text-gray-600">
+                                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Data e localização</h3>
+                                    <p class="text-gray-600 ms-4">
                                         É lhe dada a liberdade para escolher a data e o horário da cerimónia, bem como a localização onde pretende que esta seja realizada.
                                     </p>
                                 </div>
                                 <div>
                                     <div class="flex items-center justify-center text-blue-500 mb-4">
                                         <!-- Placeholder para ícone -->
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="size-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7v14" />
                                         </svg>
                                     </div>
-                                    <h3 class="text-lg font-semibold text-gray-800">Personalização</h3>
-                                    <p class="text-gray-600">
+                                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Personalização</h3>
+                                    <p class="text-gray-600 ms 4">
                                         No caso de as escolhas que temos disponíveis não corresponderem com o que tem em mente, pode indicar-nos quais os
                                         requerimentos adicionais que pretende que sejam cumpridos durante a cerimónia.
                                     </p>
@@ -156,7 +156,7 @@
                                     </div>
                                 </div>
                                 <div class="md:w-1/2 text-center md:text-left md:mt-0 ml-14 mr-10">
-                                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Sobre nós e o nosso serviço</h2>
+                                    <h2 class="text-2xl font-bold text-gray-800 mb-4">Sobre nós e o nosso serviço</h2>
                                     <p class="text-gray-600">
                                         Dedicamo-nos a oferecer soluções completas e personalizadas no setor de serviços fúnebres. Pretendemos proporcionar
                                         tranquilidade, suporte e cuidado num dos momentos mais delicados da vida, garantindo que as famílias se possam despedir
