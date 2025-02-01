@@ -29,7 +29,27 @@
 
                         <!-- Steps Container -->
                         <div id="steps">
-
+                            <!-- Informações Importantes -->
+                            <div class="step" id="step-0">
+                                <div class="p-6 bg-white shadow-md rounded-lg max-w-4xl mx-auto mt-6">
+                                    <h3 class="text-lg font-bold text-gray-800 mb-4">{{ __('Informações Importantes') }}</h3>
+                                    <ul class="list-disc pl-5 text-gray-700">
+                                        <li class="mb-2">{{ __('O preço inicial é de 2500€ e incluí todos os serviços essenciais como burocracias, o transporte do falecido e uma cerimónia simples.') }}</li>
+                                        <li class="mb-2">{{ __('O valor final do serviço será obtido consoante o orçamento dado de cada serviço adicional ou extras. Poderá ainda existir observações que encareçam o plano como desejar um caixão personalizado com nome e/ou jóias como revestimento.') }}</li>
+                                        <li class="mb-2">{{ __('É aplicada uma taxa anual até ao ano do falecimento que deve ser paga até ao fim do primeiro mês de cada ano.') }}</li>
+                                        <li class="mb-2">{{ __('Temos um estabelecimento presencial para atendimento e/ou esclarecimento dos nossos serviços.') }}</li>
+                                        <li class="mb-2">{{ __('Para dúvidas, pode entrar em contacto connosco através do nosso whatsapp (+351 912441828), número de telefone (+351 227112124) ou email para "suporte@homenagemfinal.com".') }}</li>
+                                        <li class="mb-2">{{ __('No final, nas observações deverá expor todas as personalizações que desejar. Após submeter, avaliaremos e tratamos de encontrar os melhores parceiros para concretizar a despedida que ambiciona.') }}</li>
+                                        <li class="mb-2">{{ __('O pedido de pagamento será enviado juntamente com o documento final de contrato, após todos os pontos estarem acordados.') }}</li>
+                                    </ul>
+                                </div>
+                                <div class="mt-6 flex justify-center">
+                                    <button type="button"
+                                            class="btn-next bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg shadow-lg">
+                                        {{ __('Próximo') }}
+                                    </button>
+                                </div>
+                            </div>
                             <!-- Step: Dados pessoais -->
                             <div class="step" id="step-1">
                                 <h4 class="text-2xl font-bold text-center mb-6 text-gray-800">{{ __('Dados da Pessoa do Plano') }}</h4>
@@ -63,7 +83,11 @@
                                                class="w-full mt-2 border-gray-300 rounded-lg shadow-sm" required>
                                     </div>
                                 </div>
-                                <div class="mt-6 flex justify-center">
+                                <div class="mt-6 flex justify-between">
+                                    <button type="button"
+                                            class="btn-prev bg-gray-400 hover:bg-gray-500 text-white px-6 py-2 rounded-lg shadow-lg">
+                                        {{ __('Anterior') }}
+                                    </button>
                                     <button type="button"
                                             class="btn-next bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg shadow-lg">
                                         {{ __('Próximo') }}
@@ -92,7 +116,7 @@
                                                class="block text-gray-700 font-semibold">{{ __('Especifique outro tipo de cerimónia') }}
                                             <span class="required-asterisk ml-1 text-red-600">*</span></label>
                                         <input type="text" name="other-type" id="other-type"
-                                               class="w-full mt-2 border-gray-300 rounded-lg shadow-sm">
+                                               class="w-full mt-2 border-gray-300 rounded-lg shadow-sm" required>
                                     </div>
                                     <div class="hidden mt-3" id="measures">
                                         <h4 class="text-lg font-semibold text-gray-800">{{ __('Configurações da urna') }}</h4>
@@ -102,14 +126,14 @@
                                                        class="block text-gray-700 font-semibold">{{ __('Altura (cm)') }}
                                                     <span class="required-asterisk ml-1 text-red-600">*</span></label>
                                                 <input type="number" name="height" id="height"
-                                                       class="w-full mt-2 border-gray-300 rounded-lg shadow-sm">
+                                                       class="w-full mt-2 border-gray-300 rounded-lg shadow-sm" required>
                                             </div>
                                             <div>
                                                 <label for="weight"
                                                        class="block text-gray-700 font-semibold">{{ __('Peso atual (kg)') }}
                                                     <span class="required-asterisk ml-1 text-red-600">*</span></label>
                                                 <input type="number" name="weight" id="weight"
-                                                       class="w-full mt-2 border-gray-300 rounded-lg shadow-sm">
+                                                       class="w-full mt-2 border-gray-300 rounded-lg shadow-sm" required>
                                             </div>
                                         </div>
 
@@ -118,7 +142,7 @@
                                                    class="block text-gray-700 font-semibold">{{ __('Descreva como pretende que seja a urna:') }}
                                                 <span class="required-asterisk ml-1 text-red-600">*</span></label>
                                             <textarea name="coffin_description" id="coffin_description"
-                                                      class="w-full mt-2 border-gray-300 rounded-lg shadow-sm"></textarea>
+                                                      class="w-full mt-2 border-gray-300 rounded-lg shadow-sm" required></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -181,7 +205,7 @@
                                                class="block text-gray-700 font-semibold">{{ __('Especifique') }}<span
                                                 class="required-asterisk ml-1 text-red-600">*</span></label>
                                         <input type="text" name="other_religion" id="other_religion"
-                                               class="w-full mt-2 border-gray-300 rounded-lg shadow-sm">
+                                               class="w-full mt-2 border-gray-300 rounded-lg shadow-sm" required>
                                     </div>
                                 </div>
                                 <div class="mt-6 flex justify-between">
@@ -286,7 +310,7 @@
                                             <span class="required-asterisk ml-1 text-red-600">*</span>
                                         </label>
                                         <textarea name="final_observations" id="final_observations" rows="4"
-                                                  class="w-full mt-2 border-gray-300 rounded-lg shadow-sm"></textarea>
+                                                  class="w-full mt-2 border-gray-300 rounded-lg shadow-sm" required></textarea>
                                     </div>
                                 </div>
                                 <div class="mt-6 flex justify-between">
@@ -334,9 +358,6 @@
             function showStep(index) {
                 $steps.addClass('hidden');
                 $steps.eq(index).removeClass('hidden');
-
-                $steps.find('input, select, textarea').prop('required', false);
-                $steps.eq(index).find('input, select, textarea').prop('required', true);
             }
 
             $ceremonyType.on('change', function () {
@@ -360,9 +381,9 @@
             });
 
             $btnNext.on('click', function () {
-                /*if (!validateCurrentStep()) {
+                if (!validateCurrentStep()) {
                     return;
-                }*/
+                }
 
                 currentStep++;
                 showStep(currentStep);
@@ -377,7 +398,7 @@
                 const $currentForm = $steps.eq(currentStep);
                 let isValid = true;
 
-                $currentForm.find('input, select, textarea').each(function (index, el) {
+                $currentForm.find('input[required], select[required], textarea[required]').each(function (index, el) {
                     if (!this.checkValidity()) {
                         isValid = false;
                         this.reportValidity();
